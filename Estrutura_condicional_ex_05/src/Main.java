@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 /*
@@ -11,26 +12,33 @@ seguir, calcule e mostre o valor da conta a pagar.
 public class Main {
 
 	public static void main(String[] args) {
-Scanner sc = new Scanner(System.in);
-		
-		int inicial, finalizou,duracao;
-		
-		System.out.println("Digite a hora que iniciou: ");
-		inicial = sc.nextInt();
-		System.out.println("Digite a hora que finalizou: ");
-		finalizou = sc.nextInt();
-		
-		if(inicial > finalizou) {
-			duracao = (24 - inicial) + finalizou;
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+
+		int codigo, quantidade;
+		double preco = 0;
+		double total = 0;
+
+		System.out.println("Digite o codigo do item: ");
+		codigo = sc.nextInt();
+		System.out.println("Digite a quantidade: ");
+		quantidade = sc.nextInt();
+
+		if (codigo == 1) {
+			preco = 4.00;
+		} else if (codigo == 2) {
+			preco = 4.50;
+		} else if (codigo == 3) {
+			preco = 5.00;
+		} else if (codigo == 4) {
+			preco = 2.00;
+		} else if (codigo == 5) {
+			preco = 1.50;
 		}
-		else if(inicial == finalizou){
-			duracao = 24;
-		}
-		else {
-			duracao = (finalizou - inicial);
-		}
 		
-		System.out.println("O JOGO DUROU " + duracao + " HORAS(S)");
+		total = preco * quantidade;
+		System.out.printf("TOTAL: R$ %.2f", total);
+		
 		sc.close();
 
 	}
